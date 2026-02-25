@@ -1,0 +1,103 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;  
+}
+
+body {
+    background-color: rgb(42, 42, 189);
+    color: black;
+}
+
+.container { 
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #f5f5f5;
+  height: 100vh;
+  padding: 20px;
+  border-right: 5px solid #ddd;
+}
+
+.sidebar i {
+    font-size: 18px;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar button {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar button:hover {
+  background-color: #e5e5e5;
+  border-radius: 8px;
+}
+
+.sidebar button.ativo {
+  border-left: 4px solid #2563eb; /* azul lateral */
+  font-weight: bold;
+  background-color: #eef2ff;
+}
+
+
+
+main {
+  flex: 1;
+  padding: 30px;
+}
+
+.nav-logo img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+
+.nav-Esc {
+    margin-bottom: 60px;
+    height: 10px;
+}
+
+.nav-Esc h2 {
+    margin-bottom: 70px;
+    height: 9px;
+    padding: 2px; 
+}
+
+.busca {
+  padding: 50px;
+  width: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 25px;
+  background: white;
+  border-bottom: 1px solid #ddd;  
+}
+
+.header button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.idioma {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
