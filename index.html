@@ -22,93 +22,92 @@
                 <h2>Erem Dr. Jaime Monteiro</h2>
             </div>
             <div class="nav-pgn-inical">
-                <button>
+                <button onclick="mostrarPagina('pag-inicio')" class="ativo">
                     <i class="fa-regular fa-house"></i>
                     <span id="nav-inicio">Início</span>
                 </button>
             </div>
             <div class="nav-lista">
-                <button>
+                <button onclick="mostrarPagina('pag-lista')">
                     <i class="fa-regular fa-heart"></i>
                     <span id="nav-lista">Minha Lista</span>
                 </button>
             </div>
-            <div class="nav-lendo">
-                <button>
-                    <i class="fa-solid fa-book-open-reader"></i>
-                    <span id="nav-lendo">Continuar Lendo</span>
-                </button>
-            </div>
-            <div class="nav-lido">
-                <button>
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <span id="nav-lidos">Livros Lidos</span>
-                </button>
-            </div>
             <div class="nav-reservado">
-                <button>
+                <button onclick="mostrarPagina('pag-reservados')">
                     <i class="fa-regular fa-bookmark"></i>
                     <span id="nav-reservados">Livros Reservados</span>
                 </button>
             </div>
+            <div class="nav-lido">
+                <button onclick="mostrarPagina('pag-lidos')">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span id="nav-lidos">Livros Lidos</span>
+                </button>
+            </div>
 
+            <div class="nav-prazo">
+                <button onclick="mostrarPagina('pag-prazos')">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span id="nav-prazo">Meus Prazos</span>
+                </button>
+            </div>
         </nav>
 
         <main>
-            <header class="topo">
-
-                <div class="acoes-topo">
-
-                    <!-- TEMA -->
-                    <div class="tema">
+            <section class="banner-superior">
+                <header class="topo">
+                    <div class="acoes-topo">
+                        <div class="tema">
                         <button id="alternar-tema">
                             <i class="fa-solid fa-circle-half-stroke"></i>
                         </button>
                     </div>
 
-                    <!-- ACESSIBILIDADE -->
                     <div class="acessibilidade">
                         <button id="aumentar-fonte">A+</button>
                         <button id="diminuir-fonte">A-</button>
                     </div>
 
-                    <!-- IDIOMA -->
                     <div class="idioma-container">
                         <button class="idioma">
                             <span id="idioma-texto">Português</span>
                             <i class="fa-solid fa-angle-down"></i>
                         </button>
-
                         <div class="idioma-menu">
                             <button data-lang="pt">Português</button>
                             <button data-lang="en">English</button>
                             <button data-lang="es">Español</button>
                         </div>
                     </div>
-
                 </div>
-
             </header>
             <div class="busca">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="busca-texto" type="text" placeholder="Digite o nome do livro ou autor(a) que deseja buscar">
-            </div>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="busca-texto" type="text"
+                        placeholder="Digite o nome do livro ou autor(a) que deseja buscar">
+                </div>
+                 <h2 id="sugestoes">Sugestões de leitura</h2>
+                </section>
+            <section class="secao-branca">
+                <button class="minhalista">
+                    <span>Minha Lista</span> <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <p id="descricao">
+                    Escolha livros que deseja ler e armazene em sua lista para acessar rapidamente quando precisar.
+                </p>
+            </section>
 
-            <h2 id="sugestoes">Sugestões de leitura</h2>
+            <section id="pag-lista" class="conteudo-pag" style="display: none;">
+                
+                
+            </section>
 
-            <h2 id="continuar">
-                Continue Lendo
-                <i class="fa-solid fa-angle-right"></i>
-            </h2>
-
-            <h2 id="minhaLista">
-                Minha Lista
-                <i class="fa-solid fa-angle-right"></i>
-            </h2>
-
-            <p id="descricao">
-                Escolha livros que deseja ler e armazene em sua lista para acessar rapidamente quando precisar.
-            </p>
+            <section id="pag-reservados" class="conteudo-pag" style="display: none;">
+                <h2 class="titulo-secao-interna">Livros Reservados</h2>
+                <p id="descricao">Acompanhe aqui os livros que você solicitou retirada.</p>
+                
+            </section>
 
         </main>
 

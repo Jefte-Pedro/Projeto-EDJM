@@ -1,43 +1,41 @@
 /* ===== TRADUÇÕES ===== */
 
+/* ===== TRADUÇÕES ATUALIZADAS ===== */
 const traducoes = {
     pt: {
         idioma: "Português",
         inicio: "Início",
         lista: "Minha Lista",
-        lendo: "Continuar Lendo",
-        lidos: "Livros Lidos",
         reservados: "Livros Reservados",
+        lidos: "Livros Lidos",
+        prazos: "Meus Prazos", // Nome novo
         busca: "Digite o nome do livro ou autor(a) que deseja buscar",
         sugestoes: "Sugestões de leitura",
         descricao: "Escolha livros que deseja ler e armazene em sua lista para acessar rapidamente quando precisar."
     },
-
     en: {
         idioma: "English",
         inicio: "Home",
         lista: "My List",
-        lendo: "Continue Reading",
-        lidos: "Read Books",
         reservados: "Reserved Books",
+        lidos: "Read Books",
+        prazos: "My Deadlines",
         busca: "Type the book or author name you want to search",
         sugestoes: "Reading Suggestions",
         descricao: "Choose books you want to read and store them in your list for quick access."
     },
-
     es: {
         idioma: "Español",
         inicio: "Inicio",
         lista: "Mi Lista",
-        lendo: "Continuar Leyendo",
-        lidos: "Libros Leídos",
         reservados: "Libros Reservados",
+        lidos: "Libros Leídos",
+        prazos: "Mis Plazos",
         busca: "Escribe el nombre del libro o autor que deseas buscar",
         sugestoes: "Sugerencias de lectura",
         descricao: "Elige libros que deseas leer y guárdalos en tu lista para acceder rápidamente."
     }
 };
-
 
 /* ===== ESPERAR HTML CARREGAR ===== */
 
@@ -66,21 +64,21 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===== TROCAR IDIOMA ===== */
 
     function trocarIdioma(lang) {
+    idiomaTexto.textContent = traducoes[lang].idioma;
 
-        idiomaTexto.textContent = traducoes[lang].idioma;
+    document.getElementById("nav-inicio").textContent = traducoes[lang].inicio;
+    document.getElementById("nav-lista").textContent = traducoes[lang].lista;
+    document.getElementById("nav-reservados").textContent = traducoes[lang].reservados;
+    document.getElementById("nav-lidos").textContent = traducoes[lang].lidos;
+    document.getElementById("nav-prazo").textContent = traducoes[lang].prazos; // ID atualizado
 
-        document.getElementById("nav-inicio").textContent = traducoes[lang].inicio;
-        document.getElementById("nav-lista").textContent = traducoes[lang].lista;
-        document.getElementById("nav-lendo").textContent = traducoes[lang].lendo;
-        document.getElementById("nav-lidos").textContent = traducoes[lang].lidos;
-        document.getElementById("nav-reservados").textContent = traducoes[lang].reservados;
-
-        document.getElementById("busca-texto").placeholder = traducoes[lang].busca;
-        document.getElementById("sugestoes").textContent = traducoes[lang].sugestoes;
-        document.getElementById("descricao").textContent = traducoes[lang].descricao;
-
-        localStorage.setItem("idioma", lang);
-    }
+    document.getElementById("busca-texto").placeholder = traducoes[lang].busca;
+    document.getElementById("sugestoes").textContent = traducoes[lang].sugestoes;
+    
+    // Atualiza todas as descrições que usam o ID descricao
+    const descricoes = document.querySelectorAll("#descricao");
+    descricoes.forEach(d => d.textContent = traducoes[lang].descricao);
+}
 
     /* ===== CLICAR OPÇÃO ===== */
 
@@ -123,3 +121,24 @@ btnDiminuir.addEventListener("click", () => {
     document.documentElement.style.fontSize = tamanhoFonte + "px";
     localStorage.setItem("fonte", tamanhoFonte);
 });
+
+function mostrarPagina(idPagina) {
+    // 1. Esconde as seções
+    const paginas = document.querySelectorAll('.conteudo-pag');
+    paginas.forEach(pag => pag.style.display = 'none');
+
+    // 2. Mostra a clicada
+    const paginaAlvo = document.getElementById(idPagina);
+    if (paginaAlvo) {
+        paginaAlvo.style.display = 'block';
+    }
+
+    // 3. Gerenciar botões ativos na sidebar
+    const botoes = document.querySelectorAll('.sidebar button');
+    botoes.forEach(btn => btn.classList.remove('ativo'));
+    
+    // Adiciona 'ativo' ao botão que foi clicado
+    if (window.event) {
+        window.event.currentTarget.classList.add('ativo');
+    }
+}
