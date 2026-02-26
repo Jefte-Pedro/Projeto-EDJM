@@ -1,32 +1,36 @@
+/* RESET */
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(42, 42, 189);
-    color: black;
+  background-color: #1c5db1;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container { 
-    display: flex;
-    height: 100vh;
+/* LAYOUT PRINCIPAL */
+.container {
+  display: flex;
+  height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 260px;
   background-color: #f5f5f5;
   height: 100vh;
   padding: 20px;
-  border-right: 5px solid #ddd;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .sidebar i {
-    font-size: 18px;
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
+  font-size: 18px;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
 }
 
 .sidebar button {
@@ -45,59 +49,220 @@ body {
 }
 
 .sidebar button.ativo {
-  border-left: 4px solid #2563eb; /* azul lateral */
+  border-left: 4px solid #000000;
   font-weight: bold;
-  background-color: #eef2ff;
+  background-color: hsl(197, 72%, 55%);
+  color: white;
 }
 
-
-
+/* CONTEÚDO */
 main {
   flex: 1;
-  padding: 30px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
-.nav-logo img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-}
-
-.nav-Esc {
-    margin-bottom: 60px;
-    height: 10px;
-}
-
-.nav-Esc h2 {
-    margin-bottom: 70px;
-    height: 9px;
-    padding: 2px; 
+.busca, 
+.sugestoes, 
+.continuar, 
+.minhaLista, 
+.descricao {
+  padding-left: 100px;
+  padding-right: 40px;
 }
 
 .busca {
-  padding: 50px;
-  width: 10px;
-}
-
-.header {
+  margin: 50px 80px; /* Alinha a barra inteira com o resto do texto */
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 15px 25px;
-  background: white;
-  border-bottom: 1px solid #ddd;  
+  max-width: 600px;
+  width: auto; 
+  padding-left: 0 ; 
 }
 
-.header button {
+.busca i {
+  position: absolute;
+  /* Ajuste vertical e horizontal da lupa */
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente com precisão */
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  z-index: 2;
+}
+
+.busca input {
+  width: 100%;
+  padding: 10px 15px 10px 45px; /* Espaço na esquerda para a lupa */
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil */
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.busca input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.busca input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+/* LOGO / ESCOLA */
+.nav-logo img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.nav-Esc {
+  margin-bottom: 40px;
+}
+
+.nav-Esc h2 {
+  padding: 5px 0;
+}
+
+/* ================= HEADER SUPERIOR ================= */
+
+.topo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* tudo na direita */
+  padding: 0 40px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* container dos controles */
+.acoes-topo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* estilo padrão botões topo */
+.acoes-topo button {
   border: none;
-  background: none;
+  background: transparent; 
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 15px;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 }
 
+.acoes-topo button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* separadores visuais */
+.tema,
+.acessibilidade {
+  position: relative;
+  padding-right: 20px;
+}
+
+.tema::after,
+.acessibilidade::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.3);
+}
+
+/* tema */
+.tema button {
+  display: flex;
+  gap: 6px;
+  font-size: 16px;
+}
+
+/* acessibilidade */
+.acessibilidade {
+  display: flex;
+  gap: 8px;
+}
+
+/* idioma */
 .idioma {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+}
+
+/* dropdown idioma */
+.idioma-container {
+  position: relative;
+}
+
+.idioma-menu {
+  position: absolute;
+  top: 170%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: black;
+  border-radius: 8px;
+  padding: 5px;
+  min-width: 150px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 0.3s;
+}
+
+.idioma-menu.ativo {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.idioma-menu button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.idioma-menu button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#sugestoes, #continuar, #minhaLista {
+  color: white; 
+  padding-left: 100px; 
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 0px;
+}
+
+#descricao {
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 100px;
+  font-size: 14px;
+  max-width: 800px;
+  margin-left: 0px;
 }
