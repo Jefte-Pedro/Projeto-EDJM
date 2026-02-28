@@ -31,6 +31,7 @@ body {
     min-height: 100%;
     position: relative;
     z-index: 1;
+    margin-top: 200px;
 }
 
 .banner-superior, 
@@ -128,13 +129,13 @@ main {
 }
 
 .busca {
-  margin: 50px 80px; /* Alinha a barra inteira com o resto do texto */
+  margin: 40px 80px; /* Alinha a barra inteira com o resto do texto */
   position: relative;
   display: flex;
   align-items: center;
   max-width: 600px;
   width: auto; 
-  padding-left: 0 ; 
+  padding-left: 0; 
 }
 
 .busca i {
@@ -153,7 +154,7 @@ main {
   padding: 10px 15px 10px 45px; /* Espaço na esquerda para a lupa */
   background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil */
-  border-radius: 6px;
+  border-radius: 12px;
   color: white;
   font-size: 16px;
   outline: none;
@@ -341,11 +342,11 @@ main {
 }
 
 
-#sugestoes, #continuar {
+#sugestoes {
   color: white; 
   padding-left: 100px; 
-  margin-top: 30px;
-  margin-bottom: 0px;
+  margin-top: -20px;
+  margin-bottom: 400px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -378,4 +379,23 @@ main {
 .aba-item.ativa {
     color: #1c5db1;
     border-bottom: 4px solid #1c5db1;
+}
+
+.botao-lista {
+  background: none;
+  border: none;
+  font-size: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #222;
+  padding: 8px 100px;
+  padding-left: 100;
+  margin-top: 100px;
+}
+
+.botao-lista:hover {
+  color: #535151;
 }

@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        
+
         <nav class="sidebar">
             <div class="nav-logo">
                 <img src="img/IMG-BIBLIOTECA.png" alt="IMG-BIBLIOTECA">
@@ -31,7 +31,7 @@
                 </button>
             </div>
 
-             <div class="nav-lista" id="tela-lista">
+            <div class="nav-lista" id="tela-lista">
                 <button onclick="mostrarPagina('pag-lista')">
                     <i class="fa-regular fa-heart"></i>
                     <span id="nav-lista">Minha Lista</span>
@@ -62,71 +62,83 @@
 
 
         <main>
-            
-            <div id="pag-inicio" class="conteudo-pag" style="display: block;">
-                
-                <section class="banner-superior">
-                    <header class="topo">
-                        <div class="acoes-topo">
-                            
-                            <div class="tema">
-                                <button id="alternar-tema">
-                                    <i class="fa-solid fa-circle-half-stroke"></i>
-                                </button>
-                            </div>
+            <section class="banner-superior">
+                <header class="topo">
+                    <div class="acoes-topo">
 
-                            <div class="acessibilidade">
-                                <button id="aumentar-fonte">A+</button>
-                                <button id="diminuir-fonte">A-</button>
-                            </div>
-
-                            <div class="idioma-container">
-                                <button class="idioma">
-                                    <span id="idioma-texto">Português</span>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </button>
-                                <div class="idioma-menu">
-                                    <button data-lang="pt">Português</button>
-                                    <button data-lang="en">English</button>
-                                    <button data-lang="es">Español</button>
-                                </div>
-                            </div>
-
+                        <div class="tema">
+                            <button id="alternar-tema">
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+                            </button>
                         </div>
-                    </header>
 
-                    <div class="busca">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="busca-texto" type="text"
-                            placeholder="Digite o nome do livro ou autor(a) que deseja buscar">
+                        <div class="acessibilidade">
+                            <button id="aumentar-fonte">A+</button>
+                            <button id="diminuir-fonte">A-</button>
+                        </div>
+
+                        <div class="idioma-container">
+                            <button class="idioma">
+                                <span id="idioma-texto">Português</span>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <div class="idioma-menu">
+                                <button data-lang="pt">Português</button>
+                                <button data-lang="en">English</button>
+                                <button data-lang="es">Español</button>
+                            </div>
+                        </div>
+
                     </div>
+                </header>
 
-                    <h2 id="sugestoes">Sugestões de leitura</h2>
-                </section>
+                <div class="busca">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="busca-texto" type="text"
+                        placeholder="Digite o nome do livro ou autor(a) que deseja buscar">
+                </div>
+            </section>
+
+            <!-- Pagina Inicial Conteudo -->
+
+            <div id="pag-inicio" class="conteudo-pag" style="display: block;">
+                <h2 id="sugestoes">Sugestões de leitura</h2>
 
                 <section class="secao-branca">
-                    <button class="minhalista">
-                        <span>Minha Lista</span> <i class="fa-solid fa-angle-right"></i>
+
+                    <button class="botao-lista" onclick="mostrarPagina('pag-lista')">
+                        Minha Lista <i class="fa-solid fa-angle-right"></i>
                     </button>
+
                     <p id="descricao">
                         Escolha livros que deseja ler e armazene em sua lista para acessar rapidamente quando precisar.
                     </p>
+
                 </section>
-                
-            </div> <section id="pag-lista" class="conteudo-pag" style="display: none;">
+            </div>
+
+            <!-- Minha lista -->
+
+            <section id="pag-lista" class="conteudo-pag" style="display: none;">
                 <h2 class="titulo-secao-interna">Minha Lista</h2>
                 <p>Aqui aparecerão os livros que você salvou.</p>
             </section>
+
+            <!-- Livros Reservados -->
 
             <section id="pag-reservados" class="conteudo-pag" style="display: none;">
                 <h2 class="titulo-secao-interna">Livros Reservados</h2>
                 <p id="descricao">Acompanhe aqui os livros que você solicitou retirada.</p>
             </section>
-            
+
+            <!-- Livros Lidos -->
+
             <section id="pag-lidos" class="conteudo-pag" style="display: none;">
                 <h2 class="titulo-secao-interna">Livros Lidos</h2>
                 <p>Seu histórico de leitura.</p>
             </section>
+
+            <!-- Meus Prazos -->
 
             <section id="pag-prazos" class="conteudo-pag" style="display: none;">
                 <h2 class="titulo-secao-interna">Meus Prazos</h2>
@@ -136,7 +148,7 @@
         </main>
 
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 
