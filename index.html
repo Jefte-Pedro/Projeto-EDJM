@@ -113,15 +113,28 @@
                     <p id="descricao">
                         Escolha livros que deseja ler e armazene em sua lista para acessar rapidamente quando precisar.
                     </p>
-
                 </section>
             </div>
 
             <!-- Minha lista -->
 
             <section id="pag-lista" class="conteudo-pag" style="display: none;">
-                <h2 class="titulo-secao-interna">Minha Lista</h2>
-                <p>Aqui aparecerão os livros que você salvou.</p>
+                <div class="header-azul-lista">
+                    <h2 class="titulo-secao-interna">Seu acervo</h2>
+                    <p>Gerencie suas leituras e reservas em um só lugar.</p>
+
+                    <div class="abas-navegacao">
+                        <button class="btn-aba active" onclick="mudarAba('lista')">Minha Lista</button>
+                        <button class="btn-aba" onclick="mudarAba('reservados')">Reservados</button>
+                        <button class="btn-aba" onclick="mudarAba('lidos')">Livros Lidos</button>
+                    </div>
+                </div>
+
+                <div class="container-conteudo-branco">
+                    <div id="conteudo-dinamico-lista">
+                        <p class="msg-vazia">Aqui aparecerão os livros que você salvou na sua lista.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Livros Reservados -->
