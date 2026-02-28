@@ -129,7 +129,7 @@ main {
 }
 
 .busca {
-  margin: 40px 80px; /* Alinha a barra inteira com o resto do texto */
+  margin: 40px 80px 0px 80px; /* Alinha a barra inteira com o resto do texto */
   position: relative;
   display: flex;
   align-items: center;
@@ -407,78 +407,86 @@ main {
   /* Pagina Lista */
 
 .header-azul-lista {
+    min-height: 250px;
     background-color: #1c5db1; 
     color: white;
     padding: 35px 20px;
     text-align: center;
-    border-radius: 15px 200px 15px 15px; /* Curva suave embaixo */
+    border-radius: 15px 200px 15px 15px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
 }
 
 
 .abas-navegacao {
-    margin-top: 25px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+    font-size: 400px;
+    text-align: left;
 }
 
 .btn-aba {
-    background: rgba(255, 255, 255, 0.1); /* Branco translúcido sobre o azul */
-    border: 1px solid white;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1); 
+    border: 5px solid #e5e5e5;
+    color: #e5e5e5;
+    padding: 25px 90px;
+    border-radius: 20px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .btn-aba.active {
-    background-color: white; /* O branco se destacando no azul */
-    color: #1c5db1; /* Texto na cor do tema */
+    background-color: white; 
+    color: #1c5db1; 
     font-weight: bold;
 }
 
 /* Área Branca de conteúdo */
+
 .container-conteudo-branco {
     background-color: #e5e5e5;
     min-height: 300px;
-    margin: -20px 20px 0 20px; /* Faz o conteúdo "subir" um pouco sobre o azul */
+    margin: -20px 20px 0 20px; 
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
 }
 
 .conteudo-pag h2 {
   color: white; 
-  padding-left: 100px; 
-  margin-top: -20px;
-  margin-bottom: 40px;
+  padding-left: 80px; 
+  margin: 0 0 10px 0;
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 45px;
-  display: flex;
+  display: block;
   align-items: center;
   gap: 10px;
-  margin-left: -10px;
+  text-align: left;   
+  margin-top: 0 !important; /* Força o título a ignorar qualquer margem superior */
+  padding-top: 0;
 }
 
-.conteudo-pag p {
-  color: white; 
-  padding-left: 100px; 
-  margin-top: -20px;
-  margin-bottom: 40px;
-  font-weight: 500;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: -10px;
+.descricao-acervo  {
+    color: white; 
+    margin: 0px 0px 50px 0px;
+    padding-left: 80px; 
+    font-weight: 500;
+    font-size: 25px;
+    text-align: left;
 }
 
-#conteudo-dinamico-lista .msg-vazia {
-  font-size: 22px !important; /* O !important força a aplicação se houver conflito */
+#conteudo-dinamico-lista, #conteudo-dinamico-reservados,
+#conteudo-dinamico-lidos {
+  font-size: 22px !important; 
     color: #000000;
     text-align: 100px;
-    display: block; /* Garante que ele se comporte como um bloco para centralizar */
+    display: block; 
     margin: 40px auto;
     font-family: sans-serif;
     margin-top: 20px;
