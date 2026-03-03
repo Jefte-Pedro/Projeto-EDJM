@@ -21,7 +21,7 @@
             </div>
 
             <div class="nav-Esc">
-                <h2>Erem Dr. Jaime Monteiro</h2>
+                <h2>EREM Dr. Jaime Monteiro</h2>
             </div>
 
             <div class="nav-pgn-inical" id="tela-Inicio">
@@ -104,6 +104,8 @@
             <div id="pag-inicio" class="conteudo-pag" style="display: block;">
                 <h2 id="sugestoes">Sugestões de leitura</h2>
 
+                    <div id="lista-livros"></div>
+
                 <section class="secao-branca">
 
                     <button class="botao-lista" onclick="mostrarPagina('pag-lista')">
@@ -125,8 +127,11 @@
                     <p class="descricao-acervo">Gerencie suas leituras e reservas em um só lugar.</p>
 
                     <div class="abas-navegacao">
+                        
                         <button class="btn-aba active" onclick="mostrarPagina('pag-lista')">Minha Lista</button>
+
                         <button class="btn-aba" onclick="mostrarPagina('pag-reservados')">Reservados</button>
+
                         <button class="btn-aba" onclick="mostrarPagina('pag-lidos')">Livros Lidos</button>
                     </div>
                 </div>
@@ -191,7 +196,9 @@
 
     </div>
 
+    <script src="Livros.js"></script>
     <script src="script.js"></script>
 </body>
 
 </html>
+

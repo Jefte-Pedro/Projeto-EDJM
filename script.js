@@ -64,21 +64,21 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===== TROCAR IDIOMA ===== */
 
     function trocarIdioma(lang) {
-    idiomaTexto.textContent = traducoes[lang].idioma;
+        idiomaTexto.textContent = traducoes[lang].idioma;
 
-    document.getElementById("nav-inicio").textContent = traducoes[lang].inicio;
-    document.getElementById("nav-lista").textContent = traducoes[lang].lista;
-    document.getElementById("nav-reservados").textContent = traducoes[lang].reservados;
-    document.getElementById("nav-lidos").textContent = traducoes[lang].lidos;
-    document.getElementById("nav-prazo").textContent = traducoes[lang].prazos; // ID atualizado
+        document.getElementById("nav-inicio").textContent = traducoes[lang].inicio;
+        document.getElementById("nav-lista").textContent = traducoes[lang].lista;
+        document.getElementById("nav-reservados").textContent = traducoes[lang].reservados;
+        document.getElementById("nav-lidos").textContent = traducoes[lang].lidos;
+        //document.getElementById("nav-prazo").textContent = traducoes[lang].prazos; // ID atualizado
 
-    document.getElementById("busca-texto").placeholder = traducoes[lang].busca;
-    document.getElementById("sugestoes").textContent = traducoes[lang].sugestoes;
-    
-    // Atualiza todas as descrições que usam o ID descricao
-    const descricoes = document.querySelectorAll("#descricao");
-    descricoes.forEach(d => d.textContent = traducoes[lang].descricao);
-}
+        document.getElementById("busca-texto").placeholder = traducoes[lang].busca;
+        document.getElementById("sugestoes").textContent = traducoes[lang].sugestoes;
+
+        // Atualiza todas as descrições que usam o ID descricao
+        const descricoes = document.querySelectorAll("#descricao");
+        descricoes.forEach(d => d.textContent = traducoes[lang].descricao);
+    }
 
     /* ===== CLICAR OPÇÃO ===== */
 
@@ -133,12 +133,34 @@ function mostrarPagina(idPagina) {
         paginaAlvo.style.display = 'block';
     }
 
+
+
     // 3. Gerenciar botões ativos na sidebar
     const botoes = document.querySelectorAll('.sidebar button');
     botoes.forEach(btn => btn.classList.remove('ativo'));
-    
+
     // Adiciona 'ativo' ao botão que foi clicado
     if (window.event) {
         window.event.currentTarget.classList.add('ativo');
     }
 }
+
+function mostrarLivro() {
+    const container = document.getElementById("lista-livros");
+    container.innerHTML = "";
+
+    livros.forEach(livro => {
+        container.innerHTML += `
+        <div class="card-livro">
+            <img src="${livro.capa}" alt="${livro.titulo}" class="capa-livro">
+            <h3>${livro.titulo}</h3>
+            <p><strong>Autor:</strong> ${livro.autor}</p>
+            <p><strong>Prateleira:</strong> ${livro.prateleira}</p>
+            <p><strong>Status:</strong> ${livro.disponivel ? "Disponível" : "Emprestado"}</p>
+        </div>
+        `;
+    });
+}
+
+console.log("mostrarLivros foi chamada");
+mostrarLivro();
