@@ -124,23 +124,47 @@ main {
 .prazo, 
 .minhaLista, 
 .descricao {
-  padding-left: 100px;
+  padding-left: 0px;
   padding-right: 40px;
 }
 
+
 .capa-livro {
-    width: 200px;
-    height: auto;
-    margin-bottom: 10px;
-    margin-top: 40px;
-}
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
     
+}
+
+.card-livro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    padding: 15px;
+    border-radius: 10px;
+    width: 240px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-livro h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.card-livro p {
+    font-size: 14px;
+    margin: 4px 0;
+}
 
 #lista-livros {
     display: flex;
-    justify-content: center;   /* centraliza horizontal */
-    align-items: flex-start;   /* alinha mais pra cima */
-    margin-top: 40px;          /* controla distância do topo */
+    gap: 30px;
+    margin: 20px 100px 0 100px;
+    justify-content: flex-start;   /* centraliza horizontal */
+    align-items: flex-start;            
 }
 
 .busca {
@@ -360,8 +384,7 @@ main {
 #sugestoes {
   color: white; 
   padding-left: 100px; 
-  margin-top: -20px;
-  margin-bottom: 400px;
+  margin-bottom: 20px;
   font-weight: 500;
   display: flex;
   align-items: center;
