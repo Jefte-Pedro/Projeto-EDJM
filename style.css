@@ -1,62 +1,87 @@
+/* ===================================================== */
 /* RESET */
+/* ===================================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-    overflow: hidden;
-    margin: 0; /* Trava o scroll global do navegador */
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 body {
   background-color: #1c5db1;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  
 }
 
-.banner-superior {
-    background-color: #1c5db1;
-    color: white;
-    width: 100%;
-    padding-bottom: 60px; /* Espaço para as abas "morderem" o azul */
-}
 
-.secao-branca {
-    background-color: #F0F2F5;
-    width: 100%;
-    min-height: 100%;
-    position: relative;
-    z-index: 1;
-    margin-top: 200px;
-}
+/* ===================================================== */
+/* LAYOUT BASE */
+/* ===================================================== */
 
-.banner-superior, 
-.secao-branca {
-  width: 100%; /* Força os blocos a ocuparem toda a largura da direita */
-  display: block;
-}
-
-.container-abas {
-    background-color: white;
-    max-width: 900px;
-    margin: -30px auto 0; /* A margem negativa faz ela subir um pouco para o azul */
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: center;
-}
-
-/* LAYOUT PRINCIPAL */
 .container {
   display: flex;
   height: 100vh;
 }
 
+main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+}
+
+
+/* ===================================================== */
+/* BANNER SUPERIOR */
+/* ===================================================== */
+
+.banner-superior {
+  background-color: #1c5db1;
+  color: white;
+  width: 100%;
+  padding-bottom: 60px;
+}
+
+.secao-branca {
+  background-color: #F0F2F5;
+  width: 100%;
+  min-height: 200px;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.banner-superior,
+.secao-branca {
+  width: 100%;
+  display: block;
+}
+
+.container-abas {
+  background-color: white;
+  max-width: 900px;
+  margin: -30px auto 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ===================================================== */
 /* SIDEBAR */
+/* ===================================================== */
+
 .sidebar {
   width: 260px;
   background-color: #f5f5f5;
@@ -66,7 +91,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto; /* Adiciona scroll na sidebar se houver muitos botões */
+  overflow-y: auto;
   z-index: 1000;
 }
 
@@ -94,122 +119,26 @@ body {
 
 .sidebar button.ativo {
   border-left: 4px solid #1c5db1;
-  font-weight: fixed;
+  font-weight: bold;
   background-color: #e5e5e5;
   color: #050505;
   border-radius: 8px;
 }
 
 .sidebar::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-
-/* CONTEÚDO */
-main {
-    margin-left: 260px; /* Abre espaço para a sidebar */
-    width: calc(100% - 260px); /* Ocupa exatamente o que sobra */
-    height: 100vh;
-    overflow-y: auto; /* O scroll acontece só aqui dentro */
-    overflow-x: hidden;
-    display: block; /* Mude para block para as seções empilharem naturalmente */
-}
-
-.busca, 
-.sugestoes, 
-.prazo, 
-.minhaLista, 
-.descricao {
-  padding-left: 0px;
-  padding-right: 40px;
+  background: #ccc;
+  border-radius: 10px;
 }
 
 
-.capa-livro {
-    width: 220px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    
-}
-
-.card-livro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: transparent;
-    padding: 15px;
-    border-radius: 10px;
-    width: 240px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card-livro h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    text-align: center;
-}
-
-.card-livro p {
-    font-size: 14px;
-    margin: 4px 0;
-}
-
-#lista-livros {
-    display: flex;
-    gap: 30px;
-    margin: 20px 100px 0 100px;
-    justify-content: flex-start;   /* centraliza horizontal */
-    align-items: flex-start;            
-}
-
-.busca {
-  margin: 40px 80px 0px 80px; /* Alinha a barra inteira com o resto do texto */
-  position: relative;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  width: auto; 
-  padding-left: 0; 
-}
-
-.busca i {
-  position: absolute;
-  /* Ajuste vertical e horizontal da lupa */
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%); /* Centraliza verticalmente com precisão */
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
-  z-index: 2;
-}
-
-.busca input {
-  width: 100%;
-  padding: 10px 15px 10px 45px; /* Espaço na esquerda para a lupa */
-  background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil */
-  border-radius: 12px;
-  color: white;
-  font-size: 16px;
-  outline: none;
-  transition: 0.3s;
-}
-
-.busca input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.busca input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: white;
-}
-
+/* ===================================================== */
 /* LOGO / ESCOLA */
+/* ===================================================== */
+
 .nav-logo img {
   width: 180px;
   height: 180px;
@@ -224,30 +153,32 @@ main {
   padding: 5px 0;
 }
 
-/* ================= HEADER SUPERIOR ================= */
+
+/* ===================================================== */
+/* HEADER SUPERIOR */
+/* ===================================================== */
 
 .topo {
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* tudo na direita */
+  justify-content: flex-end;
   padding: 0 40px;
   color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  ;
+  background-color: #1c5db1;
 }
 
-/* container dos controles */
 .acoes-topo {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* estilo padrão botões topo */
 .acoes-topo button {
   border: none;
-  background: transparent; 
+  background: transparent;
   color: white;
   padding: 6px 12px;
   border-radius: 6px;
@@ -262,7 +193,11 @@ main {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* separadores visuais */
+
+/* ===================================================== */
+/* ACESSIBILIDADE / TEMA / IDIOMA */
+/* ===================================================== */
+
 .tema,
 .acessibilidade {
   position: relative;
@@ -277,29 +212,25 @@ main {
   top: 25%;
   height: 50%;
   width: 1px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* tema */
 .tema button {
   display: flex;
   gap: 6px;
   font-size: 16px;
 }
 
-/* acessibilidade */
 .acessibilidade {
   display: flex;
   gap: 8px;
 }
 
-/* idioma */
 .idioma {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 
 .idioma-container {
   position: relative;
@@ -314,8 +245,7 @@ main {
   border-radius: 8px;
   padding: 5px;
   min-width: 150px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -342,48 +272,129 @@ main {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.minhalista {
-  color: rgb(0, 0, 0);
-  font-size: 24px; /* Tamanho aproximado do "Sugestões" */
-  font-weight: bold;
-  margin-left: 100px; /* Alinhamento que padronizamos */
-  margin-top: 50px;
-  margin-bottom: 10px;
+
+/* ===================================================== */
+/* BUSCA */
+/* ===================================================== */
+
+.busca,
+.sugestoes,
+.prazo,
+.minhalista,
+.descricao {
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.busca {
+  margin: 40px 80px 0px 80px;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0px;
-  background: none;
-  border: none;
-  padding: 0;
-  padding-bottom: 2px; /* Remove o espaço de botão */
-  cursor: pointer;
-  text-decoration: none;
+  max-width: 600px;
+  width: auto;
+  padding-left: 0;
 }
 
-.minhalista:hover span {
-    text-decoration: underline;
+.busca i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  z-index: 2;
 }
 
-/* Estilo da setinha > ao lado do nome */
-.minhalista i {
-  font-size: 23px;
-  color: rgba(0, 0, 0);
+.busca input {
+  width: 100%;
+  padding: 10px 15px 10px 45px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
 }
 
+.busca input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.busca input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+
+/* ===================================================== */
+/* CARDS DE LIVROS */
+/* ===================================================== */
+
+#lista-livros {
+  display: flex;
+  gap: 30px;
+  margin: 0px 100px;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.card-livro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 0 0 200px;
+}
+
+.card-livro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+.capa-livro {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-livro h3 {
+  margin-top: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.card-livro p {
+  font-size: 13px;
+  margin: 2px 0;
+  text-align: center;
+}
+
+
+/* ===================================================== */
+/* SEÇÕES INTERNAS */
+/* ===================================================== */
 
 #descricao {
-    margin-left: 100px;
-    padding-left: 100; /* Remove o padding antigo para não somar com o margin */
-    color: rgba(0, 0, 0);
-    font-size: 20px;
-    max-width: 800px;
-    margin-top: 10px;
+  margin-left: 100px;
+  color: rgba(0, 0, 0);
+  font-size: 20px;
+  max-width: 800px;
+  margin-top: 10px;
 }
 
-
 #sugestoes {
-  color: white; 
-  padding-left: 100px; 
+  color: white;
+  padding-left: 100px;
   margin-bottom: 20px;
   font-weight: 500;
   display: flex;
@@ -392,36 +403,76 @@ main {
   margin-left: 0px;
 }
 
-.titulo-secao-interna {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 150px; /* Valor para afastar para o meio como você pediu */
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.titulo-secao-interna,
+.titulo-prazo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 150px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
+
+
+/* ===================================================== */
+/* ABAS */
+/* ===================================================== */
 
 .aba-item {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    border: none;
-    background: none;
-    font-weight: bold;
-    cursor: pointer;
-    color: #555;
-    border-bottom: 4px solid transparent;
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+  border-bottom: 4px solid transparent;
 }
+
 .aba-item.ativa {
-    color: #1c5db1;
-    border-bottom: 4px solid #1c5db1;
+  color: #1c5db1;
+  border-bottom: 4px solid #1c5db1;
 }
 
-    /* Minha Lista */
 
-  /* pagina inicial  */
+/* ===================================================== */
+/* MINHA LISTA */
+/* ===================================================== */
+
+.minhalista {
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  background: none;
+  border: none;
+  padding: 0;
+  padding-bottom: 2px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.minhalista:hover span {
+  text-decoration: underline;
+}
+
+.minhalista i {
+  font-size: 23px;
+  color: rgba(0, 0, 0);
+}
+
+
+/* ===================================================== */
+/* BOTÃO LISTA */
+/* ===================================================== */
 
 .botao-lista {
   background: none;
@@ -442,62 +493,81 @@ main {
   color: #535151;
 }
 
-  /* Pagina Lista */
+
+/* ===================================================== */
+/* PÁGINA LISTA */
+/* ===================================================== */
 
 .header-azul-lista {
-    min-height: 250px;
-    background-color: #1c5db1; 
-    color: white;
-    padding: 35px 20px;
-    text-align: center;
-    border-radius: 15px 200px 15px 15px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: relative;
+  min-height: 250px;
+  background-color: #1c5db1;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  border-radius: 15px 200px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
 }
 
-
 .abas-navegacao {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 400px;
-    text-align: left;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 400px;
+  text-align: left;
 }
 
 .btn-aba {
-    background: rgba(255, 255, 255, 0.1); 
-    border: 5px solid #e5e5e5;
-    color: #e5e5e5;
-    padding: 25px 90px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #e5e5e5;
+  color: #e5e5e5;
+  padding: 25px 90px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn-aba.active {
-    background-color: white; 
-    color: #1c5db1; 
-    font-weight: bold;
+  background-color: #e5e5e5;
+  color: #1c5db1;
+  font-weight: bold;
 }
 
-/* Área Branca de conteúdo */
+
+/* ===================================================== */
+/* CONTEÚDO BRANCO */
+/* ===================================================== */
 
 .container-conteudo-branco {
-    background-color: #e5e5e5;
-    min-height: 300px;
-    margin: -20px 20px 0 20px; 
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    
+  background-color: #e5e5e5;
+  min-height: 400px;
+  margin: 20px 20px 20px 20px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+.container-conteudo-branco-prazo {
+  background-color: #e5e5e5;
+  min-height: 400px;
+  margin: 20px 20px 20px 20px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+
+/* ===================================================== */
+/* TÍTULOS E DESCRIÇÕES */
+/* ===================================================== */
+
 .conteudo-pag h2 {
-  color: white; 
-  padding-left: 80px; 
+  color: white;
+  padding-left: 80px;
   margin: 0 0 10px 0;
   margin-bottom: 10px;
   font-weight: 500;
@@ -505,29 +575,264 @@ main {
   display: block;
   align-items: center;
   gap: 10px;
-  text-align: left;   
-  margin-top: 0 !important; /* Força o título a ignorar qualquer margem superior */
+  text-align: left;
+  margin-top: 0 !important;
   padding-top: 0;
 }
 
-.descricao-acervo  {
-    color: white; 
-    margin: 0px 0px 50px 0px;
-    padding-left: 80px; 
-    font-weight: 500;
-    font-size: 25px;
-    text-align: left;
+.descricao-acervo {
+  color: white;
+  margin: 0px 0px 50px 0px;
+  padding-left: 80px;
+  font-weight: 500;
+  font-size: 25px;
+  text-align: left;
 }
 
-#conteudo-dinamico-lista, #conteudo-dinamico-reservados,
-#conteudo-dinamico-lidos {
-  font-size: 22px !important; 
-    color: #000000;
-    text-align: 100px;
-    display: block; 
-    margin: 40px auto;
-    font-family: sans-serif;
-    margin-top: 20px;
-    padding-left: 40px;
+.descricao-prazo {
+  color: white;
+  margin: 0px 0px 50px 0px;
+  padding-left: 80px;
+  font-weight: 500;
+  font-size: 25px;
+  text-align: left;
 }
 
+
+/* ===================================================== */
+/* CONTEÚDO DINÂMICO */
+/* ===================================================== */
+
+#conteudo-dinamico-lista,
+#conteudo-dinamico-reservados,
+#conteudo-dinamico-lidos,
+#conteudo-dinamico-prazo {
+  font-size: 22px !important;
+  color: #000000;
+  text-align: left;
+  display: block;
+  margin: 40px auto;
+  font-family: sans-serif;
+  margin-top: 20px;
+  padding-left: 40px;
+}
+
+/* /* ===================================================== */
+/* PAGINA DO LIVRO
+/* ===================================================== */
+
+/* 1. O Botão Voltar */
+.back {
+  display: flex;
+  align-items: center;
+  margin-left: 80px;
+  margin-bottom: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  gap: 1px;
+}
+
+.back:hover {
+  color: #c5c5c5;
+}
+
+/* 2. O Container Flex (Capa + Textos) */
+.info-livro {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 50px;
+  padding-left: 80px;
+  width: 100%;
+}
+
+/* 3. A Imagem da Capa */
+#livro-capa {
+  width: 260px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  padding-left: 0 !important;
+}
+
+/* 4. O Bloco de Textos */
+.textos-livro {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  max-width: 700px;
+}
+
+/* 5. O Título (Forçando alinhamento e removendo margens extras) */
+#livro-titulo {
+  color: white !important;
+  font-size: 48px !important;
+  font-weight: 600;
+  margin: 0 0 10px 0 !important;
+  padding: 0 !important;
+  line-height: 1.2;
+}
+
+/* 6. Autor, Prateleira e Status */
+#livro-autor,
+#livro-prateleira,
+#livro-status,
+#livro-unidades,
+#livro-codigo {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  margin: 5px 0;
+  font-weight: normal;
+}
+
+.divisor-livro {
+  border: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 20px 0;
+  width: 650px;
+}
+
+.detalhes-tecnicos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px;
+}
+
+.detalhes-tecnicos p {
+  padding: 0 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  margin: 0;
+}
+
+.detalhes-tecnicos p:first-child {
+  padding-left: 0;
+}
+
+.detalhes-tecnicos p:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* ===================================================== */
+/* AVALIAÇÃO LIVRO */
+/* ===================================================== */
+
+.avaliacao-livro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.estrelas {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.estrela {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.estrela.ativa {
+  color: gold;
+}
+
+#media-avaliacao,
+.titulo-avaliacao {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  line-height: 1;
+}
+
+.titulo-avaliacao {
+  font-weight: bold;
+}
+
+/* ===================================================== */
+/* BOTÕES DE AÇÃO NA PÁGINA DO LIVRO */
+/* ===================================================== */
+
+.botoes-acoes {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.botoes-acoes button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  background-color: transparent;
+  color: white;
+}
+
+
+.botoes-acoes .btn-lista {
+  color: white;
+}
+
+/* Efeito ao passar o mouse */
+.botoes-acoes button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.botoes-acoes .btn-lista:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ===================================================== */
+/* BOTÕES DE AÇÃO NA PÁGINA DO LIVRO - DESCRIÇÂO*/
+/* ===================================================== */
+
+/* Container principal ajustado para 98% de largura */
+.container-conteudo-branco-livro {
+    background-color: white;
+    margin-top: 40px; /* Distância da área da capa */
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Novo estilo para o título da seção */
+.titulo-sessao-livro {
+    padding: 25px 40px 15px 40px;
+    color: #000000; /* Azul padrão do seu projeto */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #d4d4d4; /* Linha sutil abaixo do título */
+    margin: 0;
+}
+
+/* Área do texto otimizada para leitura */
+.texto-livro {
+    padding: 30px 40px 40px 40px;
+    color: #3a3a3a;
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas */
+    font-size: 1.05rem;
+    text-align: justify; /* Alinha o texto nas duas margens */
+}

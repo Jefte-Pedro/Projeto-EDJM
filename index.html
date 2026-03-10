@@ -25,35 +25,35 @@
             </div>
 
             <div class="nav-pgn-inical" id="tela-Inicio">
-                <button onclick="mostrarPagina('pag-inicio')" class="ativo">
+                <button onclick="mostrarPagina('pag-inicio', this)" class="ativo">
                     <i class="fa-regular fa-house"></i>
                     <span id="nav-inicio">Início</span>
                 </button>
             </div>
 
             <div class="nav-lista" id="tela-lista">
-                <button onclick="mostrarPagina('pag-lista')">
+                <button onclick="mostrarPagina('pag-lista', this)">
                     <i class="fa-regular fa-heart"></i>
                     <span id="nav-lista">Minha Lista</span>
                 </button>
             </div>
 
             <div class="nav-reservado">
-                <button onclick="mostrarPagina('pag-reservados')">
+                <button onclick="mostrarPagina('pag-reservados', this)">
                     <i class="fa-regular fa-bookmark"></i>
                     <span id="nav-reservados">Livros Reservados</span>
                 </button>
             </div>
 
             <div class="nav-lido">
-                <button onclick="mostrarPagina('pag-lidos')">
+                <button onclick="mostrarPagina('pag-lidos', this)">
                     <i class="fa-solid fa-clock-rotate-left"></i>
                     <span id="nav-lidos">Livros Lidos</span>
                 </button>
             </div>
 
             <div id="prazo" class="nav-prazo">
-                <button onclick="mostrarPagina('pag-prazos')">
+                <button onclick="mostrarPagina('pag-prazos', this)">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span>Meus Prazos</span>
                 </button>
@@ -103,7 +103,11 @@
 
             <div id="pag-inicio" class="conteudo-pag" style="display: block;">
                 <h2 id="sugestoes">Sugestões de leitura</h2>
-                    <div id="lista-livros"></div> 
+                <div id="lista-livros"></div>
+
+
+
+
 
                 <section class="secao-branca">
 
@@ -126,7 +130,7 @@
                     <p class="descricao-acervo">Gerencie suas leituras e reservas em um só lugar.</p>
 
                     <div class="abas-navegacao">
-                        
+
                         <button class="btn-aba active" onclick="mostrarPagina('pag-lista')">Minha Lista</button>
 
                         <button class="btn-aba" onclick="mostrarPagina('pag-reservados')">Reservados</button>
@@ -187,17 +191,90 @@
             <!-- Meus Prazos -->
 
             <section id="pag-prazos" class="conteudo-pag" style="display: none;">
-                <h2 class="titulo-secao-interna">Meus Prazos</h2>
-                <p>Acompanhe as datas de devolução.</p>
+                <h2 class="titulo-prazo">Meus Prazos</h2>
+                <p class="descricao-prazo">Acompanhe as datas de devolução e Renovação.</p>
+
+                <div class="container-conteudo-branco-prazo">
+                    <div id="conteudo-dinamico-prazo">
+                        <p class="msg-vazia-prazo">Acompanhe aqui as datas de devolução e Renovação dos seus livros.</p>
+
+                    </div>
+                </div>
+
             </section>
 
-        </main>
+            <!-- Pagina do Livro -->
 
+            <section id="pag-livro" class="conteudo-pag" style="display:none;">
+
+                <button class="back" onclick="voltarPagina()">
+                    <i class="fa-solid fa-angle-left"></i> Voltar
+                </button>
+
+                <div class="info-livro">
+                    <img id="livro-capa" class="capa-livro">
+
+                    <div class="textos-livro">
+
+                        <h2 id="livro-titulo">Dom Casmurro</h2>
+                        <p id="livro-autor">Machado de Assis</p>
+
+                        <hr class="divisor-livro">
+
+                        <div class="detalhes-tecnicos">
+                            <p id="livro-prateleira"></p>
+                            <p id="livro-unidades"></p>
+                            <p id="livro-codigo"></p>
+                            <p id="livro-status"></p>
+                        </div>
+
+                        <hr class="divisor-livro">
+
+                        <div class="avaliacao-livro">
+
+                            <div class="estrelas" id="estrelas-avaliacao">
+                                <span class="estrela" data-valor="1">★</span>
+                                <span class="estrela" data-valor="2">★</span>
+                                <span class="estrela" data-valor="3">★</span>
+                                <span class="estrela" data-valor="4">★</span>
+                                <span class="estrela" data-valor="5">★</span>
+                            </div>
+
+                            <p id="media-avaliacao">0 / 5</p>
+
+                            <p class="titulo-avaliacao">Avaliação dos leitores</p>
+                        </div>
+
+                        <div class="botoes-acoes">
+                            <button class="btn-lista">
+                                <i class="fa-regular fa-heart"></i> Minha Lista
+                            </button>
+                            <button class="btn-reservar">
+                                <i class="fa-regular fa-bookmark"></i> Reservar
+                            </button>
+                            <button class="btn-lido">
+                                <i class="fa-solid fa-check"></i> Marcar como Lido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Conteudo-livro">
+                </div>
+
+                <div class="container-conteudo-branco-livro">
+
+                    <h3 class="titulo-sessao-livro">Sinopse</h3>
+
+                    <div class="texto-livro">
+                        <p id="livro-sinopse">Carregando descrição do livro...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="Livros.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
-
