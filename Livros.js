@@ -3,6 +3,7 @@ const livros = [
         id: 1,
         titulo: "Dom Casmurro",
         autor: "Machado de Assis",
+        editora: "Editora Record",
         prateleira: "A",
         codigo: "A0064dM",
         unidades: 1,
@@ -50,13 +51,13 @@ const livros = [
         capa: "https://m.media-amazon.com/images/I/91o6FMAy8UL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-        id: 5,
-        titulo: "O Homem de Giz",
+        id: 6,
+        titulo: "O Homem de G",
         autor: "C. J. Tudor",
         prateleira: "B",
         codigo: "B1289oH",
         unidades: 1,
-        disponivel: true,
+        disponivel: false,
         capa: "https://m.media-amazon.com/images/I/91o6FMAy8UL._AC_UF1000,1000_QL80_.jpg"
     },
 ]

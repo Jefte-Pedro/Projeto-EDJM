@@ -173,12 +173,9 @@ function mostrarPagina(idPagina) {
 
 /* ===== BOTÃO VOLTAR ===== */
 
-/* ===== BOTÃO VOLTAR (Ajustado) ===== */
 function voltarPagina() {
     const paginaAnterior = localStorage.getItem("paginaAnterior");
 
-    // Se houver histórico e não for a própria página do livro, volta. 
-    // Caso contrário, manda para o início por segurança.
     if (paginaAnterior && paginaAnterior !== "pag-livro") {
         mostrarPagina(paginaAnterior);
     } else {
@@ -229,6 +226,7 @@ function abrirLivro(idLivro) {
     document.getElementById("livro-titulo").textContent = livro.titulo;
     document.getElementById("livro-capa").src = livro.capa;
     document.getElementById("livro-autor").textContent = livro.autor;
+    document.getElementById("livro-editora").textContent = livro.editora;
     document.getElementById("livro-prateleira").textContent = "Prateleira: " + livro.prateleira;
     document.getElementById("livro-unidades").textContent = "Unidades: " + livro.unidades;
     document.getElementById("livro-codigo").textContent = "Codigo: " + livro.codigo;
@@ -237,16 +235,32 @@ function abrirLivro(idLivro) {
 
     // --- LOGICA DE MEMÓRIA ---
     const paginaAtual = localStorage.getItem("paginaAtual");
-    // Só salva como anterior se a página atual NÃO for a do próprio livro (evita erro no Voltar)
+    
     if (paginaAtual && paginaAtual !== "pag-livro") {
         localStorage.setItem("paginaAnterior", paginaAtual);
     }
 
-    // SALVA O ID DO LIVRO para que ele não suma no F5
+
     localStorage.setItem("livroAbertoID", idLivro);
+
+    const elementoStatus = document.getElementById("livro-status");
+
+
+elementoStatus.textContent = livro.disponivel ? "Disponível" : "Emprestado";
+
+
+if (livro.disponivel) {
+    elementoStatus.classList.add("disponivel");
+    elementoStatus.classList.remove("emprestado");
+} else {
+    elementoStatus.classList.add("emprestado");
+    elementoStatus.classList.remove("disponivel");
+}
 
     mostrarPagina("pag-livro");
 }
+
+
 
 let totalAvaliacoes = 0
 let somaAvaliacoes = 0
@@ -278,6 +292,16 @@ estrelas.forEach(estrela => {
     })
 
 })
+
+function scrollCarrossel(direcao) {
+    const lista = document.getElementById('lista-livros');
+    // Calcula quanto deve rolar (largura de 2 cards aproximadamente)
+    const larguraCard = 230; 
+    lista.scrollBy({
+        left: direcao * (larguraCard * 2),
+        behavior: 'smooth'
+    });
+}
 
 /* ===== INICIAR SISTEMA ===== */
 
