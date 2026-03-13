@@ -308,3 +308,84 @@ function scrollCarrossel(direcao) {
 console.log("mostrarLivros foi chamada");
 
 mostrarLivro();
+
+
+// ==========================================
+// LÓGICA DE CRIAR LISTAS PERSONALIZADAS
+// ==========================================
+
+const modalLista = document.getElementById('modal-lista');
+const btnAbrirModal = document.getElementById('btn-abrir-modal');
+const btnConfirmarLista = document.getElementById('btn-confirmar-lista');
+const inputNomeLista = document.getElementById('input-nome-lista');
+const containerListas = document.getElementById('conteudo-dinamico-lista');
+
+// Array para guardar os dados (simulando um banco de dados)
+let colecaoDeListas = [];
+
+// 1. Abrir e Fechar Modal
+if (btnAbrirModal) {
+    btnAbrirModal.onclick = () => {
+        modalLista.style.display = 'block';
+        inputNomeLista.focus(); // Já coloca o cursor piscando pro usuário digitar
+    };
+}
+
+function fecharModal() {
+    modalLista.style.display = 'none';
+    inputNomeLista.value = ''; // Limpa o texto que estava lá
+}
+
+// 2. Criar a Lista de Fato
+if (btnConfirmarLista) {
+    btnConfirmarLista.onclick = () => {
+        const nomeDaLista = inputNomeLista.value.trim();
+        
+        if (nomeDaLista !== "") {
+            // Cria um objeto para a nova lista
+            const novaLista = {
+                id: Date.now(), // Gera um ID único baseado na data/hora
+                nome: nomeDaLista,
+                livros: [] // Começa sem livros
+            };
+            
+            colecaoDeListas.push(novaLista); // Salva na nossa coleção
+            fecharModal();
+            renderizarListasNaTela();
+        } else {
+            alert("Por favor, digite um nome para a lista.");
+        }
+    };
+}
+
+// 3. Desenhar as listas no HTML
+function renderizarListasNaTela() {
+    containerListas.innerHTML = ''; // Apaga a mensagem de "vazio"
+    
+    colecaoDeListas.forEach(lista => {
+        const divLista = document.createElement('div');
+        divLista.className = 'card-lista'; // Usando aquele CSS que você já tem
+        
+        // Note o onclick="abrirLista(...)" na div inteira!
+        divLista.innerHTML = `
+            <div class="info-lista" onclick="abrirLista(${lista.id})" style="cursor:pointer; flex-grow: 1;">
+                <h3>${lista.nome}</h3>
+                <span class="qtd-livros">${lista.livros.length} livros</span>
+            </div>
+            <button class="btn-add-livro" onclick="event.stopPropagation(); alert('Em breve: abrir janela para escolher livros!')">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        `;
+        
+        containerListas.appendChild(divLista);
+    });
+}
+
+// 4. Entrar na Lista (O que você pediu!)
+function abrirLista(idDaLista) {
+    const listaSelecionada = colecaoDeListas.find(l => l.id === idDaLista);
+    
+    // Por enquanto, apenas um console.log e um alert para testar se achou a lista certa
+    console.log("Abrindo a lista:", listaSelecionada.nome);
+    alert(`Você entrou na lista: ${listaSelecionada.nome}. \nAqui no futuro faremos a tela mudar para mostrar os livros dela!`);
+}

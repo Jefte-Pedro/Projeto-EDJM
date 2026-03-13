@@ -697,7 +697,8 @@ main {
 }
 
 
-#livro-autor, #livro-editora,
+#livro-autor,
+#livro-editora,
 #livro-prateleira,
 #livro-unidades,
 #livro-codigo {
@@ -710,23 +711,30 @@ main {
 /* Container para alinhar os itens */
 .livro-detalhes {
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  gap: 15px;           /* Espaçamento entre o texto e o divisor */
+  align-items: center;
+  /* Centraliza verticalmente */
+  gap: 15px;
+  /* Espaçamento entre o texto e o divisor */
   margin: 10px 0;
 }
 
-#livro-autor, #livro-editora {
+#livro-autor,
+#livro-editora {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 20px;     /* Ajustei levemente para caber melhor lado a lado */
+  font-size: 20px;
+  /* Ajustei levemente para caber melhor lado a lado */
   font-weight: normal;
-  margin: 0;           /* Removido o margin individual para não quebrar o alinhamento */
+  margin: 0;
+  /* Removido o margin individual para não quebrar o alinhamento */
 }
 
 /* O Divisor "Bonito" */
 .divisor {
   width: 2px;
-  height: 24px;        /* Altura próxima à do texto */
-  background-color: rgba(255, 255, 255, 0.3); /* Branco suave/transparente */
+  height: 24px;
+  /* Altura próxima à do texto */
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Branco suave/transparente */
   border-radius: 2px;
 }
 
@@ -963,12 +971,12 @@ main {
 
 .seta-carrossel.esquerda {
   margin-right: 30px;
-  
+
 }
 
 .seta-carrossel.direita {
   margin-left: 30px;
-  
+
 }
 
 
@@ -978,7 +986,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
+
 }
 
 .esquerda {
@@ -999,3 +1007,157 @@ main {
     margin: 0 20px;
   }
 }
+
+/* ===================================================== */
+/* BOTÃO CRIAR LISTA*/
+/* ===================================================== */
+
+.btn-suaLista {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  /* Para ficar na direita como na foto */
+}
+
+.item-lista {
+  background: white;
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  clear: both;
+}
+
+.item-lista h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.contador-livros {
+  color: #666;
+  font-weight: bold;
+}
+
+.card-lista {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.card-lista:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-lista h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.qtd-livros {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.btn-add-livro {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+/* MODAL CRIAR LISTA */
+/* ===================================================== */
+
+.modal {
+  display: none;
+  /* Começa escondido */
+  position: fixed;
+  z-index: 2000;
+  /* Fica por cima de tudo, até da sidebar */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Fundo escuro transparente */
+  backdrop-filter: blur(2px);
+  /* Dá um efeito de desfoque estiloso no fundo */
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  /* Centraliza na tela */
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #1c5db1;
+  /* Azul da sua paleta */
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.modal-content input:focus {
+  border-color: #1c5db1;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-confirmar {
+  background-color: #1c5db1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-cancelar {
+  background-color: #e5e5e5;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
