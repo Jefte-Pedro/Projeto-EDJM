@@ -2,78 +2,56 @@ from django.core.management.base import BaseCommand
 import pandas as pd
 import requests
 import time
-
+import re
 from biblioteca.models import Livro
-
+from django.db.models import Q
 
 class Command(BaseCommand):
-    help = "Busca sinopses na Google Books API e salva no banco"
+    help = "Atualiza apenas a sinopse dos livros existentes"
 
     def handle(self, *args, **options):
         df = pd.read_excel("biblioteca/management/commands/Livros.xls", header=3)
         url = "https://www.googleapis.com/books/v1/volumes"
 
-        print("Colunas encontradas:", df.columns.tolist())
-        
         for titulo, autor in zip(df["TÍTULO"], df["AUTOR(A)"]):
-            if pd.isna(titulo):
-                Pass
+            if pd.isna(titulo): continue
 
-            params = {
-                "q": f'intitle:{titulo}+inauthor:{autor}',
-                "maxResults": 1,
-            }
+            titulo_limpo = re.split(r'\d+ª?\s*Ed|\s+\d+Ed|/', str(titulo))[0].strip()
+            autor_str = str(autor).strip() if not pd.isna(autor) else ""
+
+            livros_no_banco = Livro.objects.filter(
+                Q(titulo__icontains=titulo_limpo) & Q(autor=autor_str) &
+                (Q(sinopse__isnull=True) | Q(sinopse="") | Q(sinopse="Sinopse não disponível."))
+            )
+
+            if not livros_no_banco.exists():
+                self.stdout.write(f"Pulando: {titulo} (Já tem sinopse ou não está no banco)")
+                continue
+
+            titulo_busca = titulo_limpo
+            params = {"q": f'intitle:{titulo_busca}+inauthor:{autor_str}', "maxResults": 1}
 
             try:
-                response = requests.get(
-                    url,
-                    params=params,
-                    timeout=10
-                )
-                response.raise_for_status()
+                response = requests.get(url, params=params, timeout=10)
 
+                if response.status_code in [429, 503]:
+                    self.stdout.write(f"Aguardando API ({response.status_code})...")
+                    time.sleep(30)
+                    response = requests.get(url, params=params, timeout=10)
+
+                response.raise_for_status()
                 dados = response.json()
 
-                if not dados.get("items"):
-                    self.stdout.write(
-                        self.style.WARNING(
-                            f"Nenhum resultado encontrado: {titulo}"
-                        )
-                    )
-                    continue
+                if dados.get("items"):
+                    sinopse = dados["items"][0]["volumeInfo"].get("description", "Sinopse não disponível.")
+                    livros_no_banco.update(sinopse=sinopse)
+                    self.stdout.write(self.style.SUCCESS(f"Sinopse adicionada: {titulo}"))
+                else:
+                    livros_no_banco.update(sinopse="Sinopse não disponível.")
+                    self.stdout.write(f"Não encontrado na API: {titulo}")
 
-                info = dados["items"][0]["volumeInfo"]
-                sinopse = info.get(
-                    "description",
-                    "Sinopse não disponível."
-                )
-
-                Livro.objects.update_or_create(
-                    titulo=titulo,
-                    autor=autor,
-                    defaults={
-                        "sinopse": sinopse
-                    }
-                )
-
-                self.stdout.write(
-                    self.style.SUCCESS(
-                        f"Salvo: {titulo}"
-                    )
-                )
-
-            except requests.RequestException as e:
-                self.stdout.write(
-                    self.style.ERROR(
-                        f"Erro ao consultar '{titulo}': {e}"
-                    )
-                )
+                time.sleep(1.5)
 
             except Exception as e:
-                self.stdout.write(
-                    self.style.ERROR(
-                        f"Erro ao salvar '{titulo}': {e}"
-                    )
-                )
-
-            time.sleep(1.5)
+                self.stdout.write(self.style.ERROR(f"Erro em {titulo}: {e}"))
+                time.sleep(5)
