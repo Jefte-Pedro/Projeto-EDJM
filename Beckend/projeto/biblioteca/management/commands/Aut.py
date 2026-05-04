@@ -12,6 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         df = pd.read_excel("biblioteca/management/commands/Livros.xls", header=3)
         url = "https://www.googleapis.com/books/v1/volumes"
+        API_KEY = "AIzaSyB3pCR8ZU9agPrlllVt0t8eoxgC6NyXuXY"
 
         for titulo, autor in zip(df["TÍTULO"], df["AUTOR(A)"]):
             if pd.isna(titulo): continue
@@ -29,13 +30,17 @@ class Command(BaseCommand):
                 continue
 
             titulo_busca = titulo_limpo
-            params = {"q": f'intitle:{titulo_busca}+inauthor:{autor_str}', "maxResults": 1}
+            params = {"q": f'intitle:{titulo_busca}+inauthor:{autor_str}', "maxResults": 1, "key": API_KEY}
 
             try:
                 response = requests.get(url, params=params, timeout=10)
 
-                if response.status_code in [429, 503]:
-                    self.stdout.write(f"Aguardando API ({response.status_code})...")
+                if response.status_code == 429:
+                    self.stdout.write(self.style.WARNING("Cota da API esgotada (429). Encerrando..."))
+                    break
+
+                if response.status_code == 503:
+                    self.stdout.write(f"Aguardando API (503)...")
                     time.sleep(30)
                     response = requests.get(url, params=params, timeout=10)
 
